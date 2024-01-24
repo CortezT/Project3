@@ -1,18 +1,25 @@
-// Import the Express module
 const express = require('express');
+const mongoose = require('mongoose');
+const Destination = require('./models/DestinationModel');
 
-// Create an Express application
 const app = express();
-
-// Define a route for the root endpoint
-app.get('/', (req, res) => {
-  res.send('here is the route for the endpoint');
-});
-
-// Set the port for the server to listen on
 const port = 3000;
 
-// Start the server and listen on the specified port
+// Connect to MongoDB
+mongoose.connect('mongodb://localhost/your_database_name', { useNewUrlParser: true, useUnifiedTopology: true });
+
+// Define a route to fetch destinations
+app.get('/destinations', async (req, res) => {
+  try {
+    // Fetch all destinations from the database
+    const destinations = await Destination.find();
+    res.json(destinations);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
 });
