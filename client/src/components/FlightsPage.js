@@ -26,7 +26,7 @@ const FlightsPage = () => {
         const options = {
             method: 'GET',
             headers: {
-                'X-RapidAPI-Key': 'YOUR_RAPIDAPI_KEY', // Replace with your API key
+                'X-RapidAPI-Key': 'c740526878mshc6c3d746e2f3003p19d0f3jsn8f869006c8ff',
                 'X-RapidAPI-Host': 'booking-com15.p.rapidapi.com'
             }
         };
